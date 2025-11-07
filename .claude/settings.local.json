@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in *.docx)",
+      "Bash(do echo \"=== $file ===\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
