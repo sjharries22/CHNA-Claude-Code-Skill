@@ -1,0 +1,54 @@
+# chna.config.yaml — user-controlled inputs to chna-generate.
+#
+# This file is the single source of truth for what the generator does.
+# It is reproducible: re-running chna-generate with the same config and
+# the same sources.json produces the same report.
+
+organization:
+  name: "[ORGANIZATION NAME]"
+  geographic_scope: "[COUNTY / REGION / SERVICE AREA]"
+  fiscal_year: "[FISCAL YEAR]"
+
+# Sections to copy verbatim from prior CHNA documents. chunk_ids come
+# from sources.json (look under category: verbatim_candidate).
+verbatim_chunks:
+  - source_file: "Prior-CHNA.docx"
+    chunk_id: "p:12"        # e.g. "Methodology" heading and its body
+  - source_file: "Prior-CHNA.docx"
+    chunk_id: "p:48"        # e.g. "Acknowledgments"
+
+# Health themes to include in the report. Must come from the canonical
+# theme list in sources.json (top-level `themes` field).
+included_themes:
+  - "Mental and Behavioral Health"
+  - "Access to Care"
+  - "Chronic Disease"
+  - "Maternal and Child Health"
+  - "Substance Use"
+
+# 2–3 themes singled out for implementation focus. Must be a subset of
+# included_themes.
+prioritized_needs:
+  - "Mental and Behavioral Health"
+  - "Access to Care"
+
+# Optional: override section header names to match an organization's
+# template. Keys are the skill's internal section names.
+header_overrides:
+  significance: "Why This Need Matters"
+  rationale: "Data-Driven Rationale"
+  outcomes: "Health Outcomes Summary"
+  findings: "Key Findings"
+  contributing: "Contributing Factors"
+
+# Date placeholders to surface in the final report. The user fills these
+# in after generation; the skill never invents dates.
+date_placeholders:
+  - "[INSERT APPROVAL DATE]"
+  - "[INSERT BOARD ADOPTION DATE]"
+  - "[INSERT PUBLIC COMMENT PERIOD]"
+
+output:
+  dir: "./output"
+  markdown_file: "chna-report.md"
+  text_file: "chna-report.txt"

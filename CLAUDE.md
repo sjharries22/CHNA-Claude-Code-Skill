@@ -4,27 +4,41 @@ Guidance for AI assistants (Claude Code and others) working in this repository.
 
 ## Repository status
 
-This repository is in a bootstrapping phase. As of the latest commit, it contains only `.claude/settings.local.json` and this file. No application source, build scripts, tests, or dependency manifests exist yet. Update this document whenever new structure is added — do not let it drift behind reality.
+This repository ships a two-skill Claude Code Skill for producing Community Health Needs Assessment (CHNA) reports from `.docx` source documents. The skills are scaffolded and the deterministic parsing has been smoke-tested end-to-end against a synthetic `.docx`; no real CHNA inputs have been validated yet. Update this document whenever structure changes — do not let it drift behind reality.
 
 ## Project purpose
 
-Based on the repository name (`CHNA-Claude-Code-Skill`) and the initial commit message ("Add CHNA Claude Code Skill configuration … permissions for processing DOCX files"), the intended deliverable is a **Claude Code Skill** for working with CHNA (Community Health Needs Assessment) documents in `.docx` form.
+A **Claude Code Skill** for converting CHNA source files (existing CHNAs, community input, secondary data, demographics) into a standardized CHNA report. The pipeline is split into two skills so each half can be iterated on independently:
 
-A Claude Code Skill is a packaged capability that Claude can invoke via the `Skill` tool. Skills live under a directory containing a `SKILL.md` (with YAML frontmatter describing name, description, and trigger conditions) plus any supporting scripts or assets. See the Claude Code docs (https://code.claude.com/docs) for the current skill packaging format before adding one to this repo.
+- `chna-ingest` — parses `.docx` (or `.zip` of `.docx`) inputs into a single citation-ready `sources.json`.
+- `chna-generate` — consumes `sources.json` plus a user-controlled `chna.config.yaml` and produces `chna-report.md` + `chna-report.txt`.
 
-Confirm scope with the user before assuming further details — none of the actual skill logic, prompt, or supporting code has been written yet.
+Hard rule across both skills: **no fabricated data**. Every statistic and quote in the output must trace to a chunk in `sources.json`. The generator enforces this with a citation-auditor sub-agent before emitting the report. See `skills/chna-generate/SKILL.md` for the full workflow.
 
 ## Repository layout
 
 ```
 .
 ├── .claude/
-│   └── settings.local.json   # Local Claude Code harness settings (gitignored-style; user-specific allow/deny lists)
+│   └── settings.local.json       # Local Claude Code harness settings (user-specific allow/deny lists)
+├── skills/
+│   ├── chna-ingest/
+│   │   ├── SKILL.md              # Workflow instructions; invoked via the Skill tool
+│   │   └── scripts/
+│   │       ├── unpack.py         # Resolve .docx / .zip / dir → list of .docx paths
+│   │       └── extract.py        # .docx → citation-ready chunk JSON
+│   └── chna-generate/
+│       ├── SKILL.md              # Workflow instructions; invoked via the Skill tool
+│       ├── config.example.yaml   # Schema reference for chna.config.yaml
+│       └── templates/
+│           ├── section.md        # 5-section template per significant health need
+│           └── appendix.md       # Data-source appendix template
+├── requirements.txt              # python-docx, PyYAML
 ├── .git/
-└── CLAUDE.md                 # This file
+└── CLAUDE.md                     # This file
 ```
 
-When the skill itself is added, it will most likely live under a top-level directory (e.g. `skills/chna/` or similar) containing `SKILL.md` and any helper scripts. Update this section when that lands.
+Outputs (`sources.json`, `chna.config.yaml`, `chna-report.*`) are NOT checked into the repo — they may contain PHI-adjacent material. Treat them as run-local artifacts.
 
 ## Local Claude Code settings
 
@@ -79,14 +93,22 @@ The remote execution environment exposes the GitHub MCP server (tools prefixed `
 
 ## Build, test, lint
 
-None configured yet. When tooling is added (Python `pyproject.toml`, Node `package.json`, a Makefile, etc.), document the canonical commands here — for example:
+```bash
+# Install Python dependencies (python-docx, PyYAML)
+pip install -r requirements.txt
 
+# Resolve an input path (file, zip, or directory) → JSON list of .docx paths
+python3 skills/chna-ingest/scripts/unpack.py <path>
+
+# Extract a single .docx to citation-ready JSON
+python3 skills/chna-ingest/scripts/extract.py <path/to.docx> -o out.json
 ```
-# Run tests
-<command goes here>
 
-# Lint / format
-<command goes here>
-```
+No test suite or linter is configured yet. When one is added (pytest, ruff, mypy, etc.), put the canonical commands here.
 
-Until then, there is nothing to run.
+## Skill architecture notes
+
+- **SKILL.md vs scripts.** Deterministic parsing lives in the Python scripts under `skills/chna-ingest/scripts/`. Judgment — classifying chunks, drafting sections, auditing citations — lives in `SKILL.md` instructions that orchestrate sub-agents.
+- **Sub-agent fan-out.** `chna-generate` deliberately splits work across `general-purpose` sub-agents: one per prioritized health need (drafting), one citation auditor, one verbatim guard. This isolates each draft from the others and gives the auditor a clean comparison surface against `sources.json`.
+- **Reproducibility.** `chna.config.yaml` is the single source of truth for user choices (verbatim sections, themes, prioritized needs, header overrides). Re-running `chna-generate` with the same config and the same `sources.json` should produce the same report.
+- **Chunk IDs are stable.** `extract.py` derives `chunk_id` from paragraph index (`p:N`) or table coordinates (`t:T:R:C`). Don't break this format without updating both skills and any existing configs that reference them.
