@@ -2,10 +2,12 @@
 name: chna
 description: >-
   Read, extract, summarize, and compare Community Health Needs Assessment
-  (CHNA) reports. Use when the user provides one or more CHNA .docx files (or
-  asks about community health needs, health indicators, prioritized needs, or
-  implementation strategies) and wants the content extracted, summarized,
-  compared across reports, or checked against IRS 501(r)(3) requirements.
+  (CHNA) reports, and clone a previous report's brand, structure, and tone into
+  a new branded Gamma deck. Use when the user provides one or more CHNA .docx
+  files (or asks about community health needs, health indicators, prioritized
+  needs, or implementation strategies) and wants the content extracted,
+  summarized, compared, audited against IRS 501(r)(3), or rebuilt as a new
+  brand-consistent report.
 ---
 
 # CHNA Report Skill
@@ -74,6 +76,30 @@ strategy.
 - **Compliance check** — Verify the IRS 501(r)(3) required elements are
   present (see the checklist in `references/chna_guide.md`).
 
+## Match a previous report (brand + structure + tone) → Gamma deck
+
+When the goal is a **new** report that keeps a previous report's brand visuals,
+section structure, and writing tone, parse the old report once into three
+reusable artifacts, then generate a branded Gamma deck. Full details and the
+exact Gamma `generate` parameters are in `references/gamma_pipeline.md`.
+
+1. **Brand kit** — `scripts/extract_brand.py "PREV.docx" -o brand_profile.json --media-dir out/media`
+   pulls the color palette, fonts, logo/media, header/footer, and heading
+   styles from the `.docx` theme.
+2. **Structure** — `scripts/extract_structure.py "PREV.docx" -o structure.json`
+   produces a heading outline with each section classified against the CHNA
+   anatomy (and flags expected sections that are missing).
+3. **Tone** — extract the prose with `extract_docx.py`, read it, and write a
+   short tone guide (voice, reading level, terminology, do/don't).
+4. **Brand theme** — list Gamma themes with the `get_themes` tool and reuse the
+   client's existing custom theme (e.g. "Metopio Theme"); cross-check it
+   against `brand_profile.json`. Gamma can apply a theme but not create one —
+   pixel-level fixes are a one-time edit in the Gamma editor.
+5. **Generate** — assemble cards from `structure.json` using the blueprints in
+   `components/card_blueprints.md`, written in the tone guide's voice, then call
+   the Gamma `generate` tool with the brand theme. **Dry-run 2–3 cards first**
+   and share the URL before producing the full deck.
+
 ## Guardrails
 
 - This is data extraction and analysis, **not** medical or legal advice.
@@ -85,5 +111,12 @@ strategy.
 ## Files
 
 - `scripts/extract_docx.py` — dependency-free `.docx` → Markdown/JSON extractor.
+- `scripts/extract_brand.py` — brand-kit extractor (palette, fonts, logo/media,
+  header/footer, heading styles) → `brand_profile.json`.
+- `scripts/extract_structure.py` — heading outline + CHNA section classifier
+  → `structure.json`.
+- `components/card_blueprints.md` — reusable Gamma card templates for a CHNA.
 - `references/chna_guide.md` — CHNA anatomy, IRS-required elements, and a
   compliance checklist.
+- `references/gamma_pipeline.md` — how to turn a parsed report into a branded
+  Gamma deck.
