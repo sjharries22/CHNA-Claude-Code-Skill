@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(for file in *.docx)",
-      "Bash(do echo \"=== $file ===\")"
+      "Bash(do echo \"=== $file ===\")",
+      "mcp__0ce40bc2-11ac-4883-8729-4bb86af0c733__get_file_metadata",
+      "mcp__0ce40bc2-11ac-4883-8729-4bb86af0c733__download_file_content"
     ],
     "deny": [],
     "ask": []
