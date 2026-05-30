@@ -3,11 +3,11 @@ name: chna
 description: >-
   Read, extract, summarize, and compare Community Health Needs Assessment
   (CHNA) reports, and clone a previous report's brand, structure, and tone into
-  a new branded Gamma deck. Use when the user provides one or more CHNA .docx
-  files (or asks about community health needs, health indicators, prioritized
-  needs, or implementation strategies) and wants the content extracted,
-  summarized, compared, audited against IRS 501(r)(3), or rebuilt as a new
-  brand-consistent report.
+  a new brand-consistent report (self-contained HTML, or a Gamma deck). Use
+  when the user provides one or more CHNA .docx or .pdf files (or asks about
+  community health needs, health indicators, prioritized needs, or
+  implementation strategies) and wants the content extracted, summarized,
+  compared, audited against IRS 501(r)(3), or rebuilt in a client's brand.
 ---
 
 # CHNA Report Skill
@@ -76,6 +76,43 @@ strategy.
 - **Compliance check** — Verify the IRS 501(r)(3) required elements are
   present (see the checklist in `references/chna_guide.md`).
 
+## Handling PDF source reports
+
+Many published CHNAs are PDFs, which have no theme/style XML. Use the PyMuPDF
+extractor instead of the `.docx` ones:
+
+```bash
+pip install pymupdf                       # one-time
+python3 scripts/extract_brand_pdf.py "REPORT.pdf" -o profile.json --image-dir out/img
+```
+
+It infers the brand from the rendered content: dominant fonts, text + vector
+fill **colors** (the accent palette), embedded **images** (the logo is usually
+the first/cover image, saved to `out/img/`), and **heading candidates** (lines
+set larger than body text, which become the section outline). Read the
+extracted text for tone with `read_file_content` on the source, or render pages
+to images with PyMuPDF when you need to see the layout.
+
+## Match a previous report (brand + structure + tone) → branded HTML
+
+The most controllable, dependency-light deliverable is a **self-contained
+HTML** report: the brand maps directly to CSS, it opens anywhere, and it prints
+to PDF. Full details in `references/html_pipeline.md`.
+
+1. **Extract the brand** from the previous report (`extract_brand_pdf.py` for a
+   PDF, `extract_brand.py` for a `.docx`) and normalize it into a `brand.json`
+   (org, tagline, `colors`, `fonts`, optional `logo`).
+2. **Draft the content** following the previous report's structure and tone
+   into a `content.json` (title + ordered sections of typed blocks: `h3`, `p`,
+   `ul`/`ol`, `table`, `callout`, `image`). Pull figures only from inputs.
+3. **Render**:
+   `python3 scripts/build_html_report.py --brand brand.json --content content.json -o report.html`
+   The brand drives CSS custom properties; the logo is embedded as a data URI.
+4. **Preview / export to PDF** (optional): `pip install weasyprint` then
+   `python3 -c "from weasyprint import HTML; HTML('report.html').write_pdf('report.pdf')"`.
+
+See `examples/adventhealth-2020/` for a worked brand + content pair.
+
 ## Match a previous report (brand + structure + tone) → Gamma deck
 
 When the goal is a **new** report that keeps a previous report's brand visuals,
@@ -111,12 +148,17 @@ exact Gamma `generate` parameters are in `references/gamma_pipeline.md`.
 ## Files
 
 - `scripts/extract_docx.py` — dependency-free `.docx` → Markdown/JSON extractor.
-- `scripts/extract_brand.py` — brand-kit extractor (palette, fonts, logo/media,
-  header/footer, heading styles) → `brand_profile.json`.
+- `scripts/extract_brand.py` — `.docx` brand-kit extractor (palette, fonts,
+  logo/media, header/footer, heading styles) → `brand_profile.json`.
+- `scripts/extract_brand_pdf.py` — PDF brand+structure extractor (PyMuPDF):
+  fonts, colors, embedded images/logo, heading candidates.
 - `scripts/extract_structure.py` — heading outline + CHNA section classifier
   → `structure.json`.
+- `scripts/build_html_report.py` — render a `brand.json` + `content.json` into
+  a self-contained, brand-styled HTML report (prints to PDF).
 - `components/card_blueprints.md` — reusable Gamma card templates for a CHNA.
+- `examples/adventhealth-2020/` — worked `brand.json` + `content.json` pair.
 - `references/chna_guide.md` — CHNA anatomy, IRS-required elements, and a
   compliance checklist.
-- `references/gamma_pipeline.md` — how to turn a parsed report into a branded
-  Gamma deck.
+- `references/html_pipeline.md` — how to turn a parsed report into branded HTML.
+- `references/gamma_pipeline.md` — how to turn a parsed report into a Gamma deck.
