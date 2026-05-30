@@ -93,6 +93,34 @@ set larger than body text, which become the section outline). Read the
 extracted text for tone with `read_file_content` on the source, or render pages
 to images with PyMuPDF when you need to see the layout.
 
+For the **full document structure** (all sections + body + tables), use:
+
+```bash
+python3 scripts/extract_pdf_content.py "REPORT.pdf" --outline   # section list
+python3 scripts/extract_pdf_content.py "REPORT.pdf" -o content.json
+```
+
+It classifies text by font size into numbered sections, subsections,
+paragraphs, bullet lists (symbol-font glyphs) and tables, emitting the same
+`content.json` schema that `build_html_report.py` consumes — so a parsed report
+doubles as the structural template for the new cycle.
+
+## Pulling fresh data from the U.S. Census Bureau
+
+When the client needs **new-cycle data**, refresh the community profile from
+the Census Bureau's American Community Survey:
+
+```bash
+export CENSUS_API_KEY=...        # free key, never commit it
+python3 scripts/fetch_census.py --state 20 --county 059 -o census.json
+```
+
+It returns population, age, income, poverty, race/ethnicity, and housing
+indicators (plus derived percentages) for a county, ready to drop into the
+"Community Description" tables. Pair Census demographics/social-determinant
+data with clinical indicators from County Health Rankings / CDC PLACES, and
+**cite every figure** — never fabricate a number.
+
 ## Match a previous report (brand + structure + tone) → branded HTML
 
 The most controllable, dependency-light deliverable is a **self-contained
@@ -154,10 +182,16 @@ exact Gamma `generate` parameters are in `references/gamma_pipeline.md`.
   fonts, colors, embedded images/logo, heading candidates.
 - `scripts/extract_structure.py` — heading outline + CHNA section classifier
   → `structure.json`.
+- `scripts/extract_pdf_content.py` — parse a full PDF into a `content.json`
+  (sections, paragraphs, bullets, tables) for re-rendering or as a template.
+- `scripts/fetch_census.py` — pull ACS community-profile data from the Census
+  API (needs `CENSUS_API_KEY`).
 - `scripts/build_html_report.py` — render a `brand.json` + `content.json` into
   a self-contained, brand-styled HTML report (prints to PDF).
 - `components/card_blueprints.md` — reusable Gamma card templates for a CHNA.
 - `examples/adventhealth-2020/` — worked `brand.json` + `content.json` pair.
+- `examples/adventhealth-2026/` — new-cycle example: brand + Census data
+  (`census.json`) + a drafted `content.json`.
 - `references/chna_guide.md` — CHNA anatomy, IRS-required elements, and a
   compliance checklist.
 - `references/html_pipeline.md` — how to turn a parsed report into branded HTML.
