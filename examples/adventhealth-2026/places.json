@@ -1,0 +1,22 @@
+{
+  "fips": "20059", "value_type": "Age-adjusted prevalence",
+  "indicators": {
+    "OBESITY": {"label": "Adult obesity", "value_pct": 40.3, "year": "2023"},
+    "DIABETES": {"label": "Diagnosed diabetes", "value_pct": 9.6, "year": "2023"},
+    "BPHIGH": {"label": "High blood pressure", "value_pct": 31.9, "year": "2023"},
+    "HIGHCHOL": {"label": "High cholesterol", "value_pct": 31.2, "year": "2023"},
+    "CHD": {"label": "Coronary heart disease", "value_pct": 5.7, "year": "2023"},
+    "COPD": {"label": "COPD", "value_pct": 6.5, "year": "2023"},
+    "CANCER": {"label": "Cancer (excl. skin)", "value_pct": 7.2, "year": "2023"},
+    "DEPRESSION": {"label": "Depression", "value_pct": 22.1, "year": "2023"},
+    "MHLTH": {"label": "Frequent mental distress", "value_pct": 17.9, "year": "2023"},
+    "CSMOKING": {"label": "Current smoking", "value_pct": 16.5, "year": "2023"},
+    "BINGE": {"label": "Binge drinking", "value_pct": 17.4, "year": "2023"},
+    "LPA": {"label": "No leisure-time physical activity", "value_pct": 26.2, "year": "2023"},
+    "ACCESS2": {"label": "Uninsured (age 18-64)", "value_pct": 9.2, "year": "2023"},
+    "CHECKUP": {"label": "Routine checkup (past year)", "value_pct": 73.9, "year": "2023"},
+    "FOODINSECU": {"label": "Food insecurity", "value_pct": 12.5, "year": "2023"},
+    "HOUSINSECU": {"label": "Housing insecurity", "value_pct": 11.1, "year": "2023"},
+    "LACKTRPT": {"label": "Lack of reliable transportation", "value_pct": 7.2, "year": "2023"}
+  }
+}

@@ -117,9 +117,16 @@ python3 scripts/fetch_census.py --state 20 --county 059 -o census.json
 
 It returns population, age, income, poverty, race/ethnicity, and housing
 indicators (plus derived percentages) for a county, ready to drop into the
-"Community Description" tables. Pair Census demographics/social-determinant
-data with clinical indicators from County Health Rankings / CDC PLACES, and
-**cite every figure** — never fabricate a number.
+"Community Description" tables. For **clinical and behavioral health
+indicators** (obesity, diabetes, depression, smoking, food insecurity, …),
+pull county-level estimates from CDC PLACES:
+
+```bash
+python3 scripts/fetch_places.py --fips 20059 -o places.json
+```
+
+Pair the two sources — ACS for demographics/social determinants, PLACES for
+health outcomes — and **cite every figure**; never fabricate a number.
 
 ## Match a previous report (brand + structure + tone) → branded HTML
 
@@ -186,6 +193,8 @@ exact Gamma `generate` parameters are in `references/gamma_pipeline.md`.
   (sections, paragraphs, bullets, tables) for re-rendering or as a template.
 - `scripts/fetch_census.py` — pull ACS community-profile data from the Census
   API (needs `CENSUS_API_KEY`).
+- `scripts/fetch_places.py` — pull county health-indicator prevalence from
+  CDC PLACES (optional `SOCRATA_APP_TOKEN`).
 - `scripts/build_html_report.py` — render a `brand.json` + `content.json` into
   a self-contained, brand-styled HTML report (prints to PDF).
 - `components/card_blueprints.md` — reusable Gamma card templates for a CHNA.

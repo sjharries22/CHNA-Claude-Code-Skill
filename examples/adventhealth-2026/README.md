@@ -8,6 +8,9 @@ structure + tone and produce a **new-cycle** report populated with fresh
   `scripts/extract_brand_pdf.py`).
 - `census.json` — Franklin County, KS ACS 2018–2022 5-year data, pulled with
   `scripts/fetch_census.py` (state 20, county 059).
+- `places.json` — Franklin County health indicators (obesity, diabetes,
+  depression, …) from CDC PLACES, pulled with `scripts/fetch_places.py`
+  (`--fips 20059`).
 - `content.json` — a 2026 CHNA draft following the 2020 section structure and
   tone, with the Census figures filled into the demographics and data tables.
 
@@ -16,6 +19,7 @@ structure + tone and produce a **new-cycle** report populated with fresh
 ```bash
 export CENSUS_API_KEY=...     # free: https://api.census.gov/data/key_signup.html
 python3 ../../scripts/fetch_census.py --state 20 --county 059 -o census.json
+python3 ../../scripts/fetch_places.py --fips 20059 -o places.json
 ```
 
 ## Render
