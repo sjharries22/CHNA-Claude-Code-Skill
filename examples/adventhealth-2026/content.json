@@ -1,0 +1,359 @@
+{
+  "title": "2026 Community Health Needs Assessment",
+  "subtitle": "AdventHealth Ottawa",
+  "cover_note": "AdventHealth Ransom Memorial, Inc. d/b/a AdventHealth Ottawa\nServing Franklin County, Kansas\nDraft prepared {{MONTH YEAR}} — pending Hospital Board adoption",
+  "hero_image": "cover.png",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Executive Summary",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AdventHealth Ransom Memorial, Inc. d/b/a AdventHealth Ottawa (referred to in this document as AdventHealth Ottawa or “the Hospital”) conducted a Community Health Needs Assessment (CHNA) in 2026 for the community it serves in Franklin County, Kansas. Building on the Hospital’s 2020 assessment, this CHNA refreshes the community profile with the most recent U.S. Census Bureau data, incorporates county-level health-indicator estimates from the Centers for Disease Control and Prevention (CDC), and re-engages community stakeholders to identify and prioritize the area’s most significant health needs."
+        },
+        {
+          "type": "h3",
+          "text": "Goals"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Engage public health and community stakeholders, including low-income, minority and other underserved populations",
+            "Assess and understand the community’s current health issues and needs",
+            "Understand the health behaviors, risk factors and social determinants that impact health",
+            "Identify community resources and collaborate with community partners",
+            "Publish the Community Health Needs Assessment and make it widely available to the public",
+            "Use the findings to develop and implement a 2027–2029 Community Health Plan based on AdventHealth Ottawa’s prioritized issues"
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Summary of Findings"
+        },
+        {
+          "type": "p",
+          "text": "Franklin County is a predominantly rural community of approximately 25,968 residents with a median household income of $68,217 and a poverty rate of 8.3%. Secondary data show that the county faces a high burden of chronic disease — most notably adult obesity (40.3%), high blood pressure (31.9%), and diabetes (9.6%) — alongside significant behavioral-health needs, with more than one in five adults reporting depression (22.1%). These findings, together with community input, informed four priority health needs for the 2026 cycle."
+        },
+        {
+          "type": "callout",
+          "text": "Adult obesity (40.3%), behavioral health (22.1% depression), and access to care emerged as the community’s most pressing health needs (CDC PLACES 2023; U.S. Census Bureau ACS 2018–2022)."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "About AdventHealth Ottawa",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AdventHealth Ottawa is a not-for-profit hospital located in Ottawa, Kansas, the county seat of Franklin County. As part of AdventHealth and in keeping with its mission of Extending the Healing Ministry of Christ, the Hospital provides inpatient, emergency, and outpatient services to residents of Franklin County and the surrounding region. As a tax-exempt facility under Internal Revenue Code section 501(c)(3), the Hospital conducts this assessment to satisfy the requirements of section 501(r)(3) and, more importantly, to guide its community-benefit investments toward the area’s greatest needs."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Community Description and Demographics",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AdventHealth Ottawa defines its community as Franklin County, Kansas, a predominantly rural county of approximately 572 square miles served from the city of Ottawa. The following profile is drawn from the U.S. Census Bureau American Community Survey (ACS) 2018–2022 five-year estimates."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Indicator",
+            "Franklin County, KS",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Total population",
+              "25,968",
+              "ACS 2018–2022"
+            ],
+            [
+              "Median age",
+              "40.2 years",
+              "ACS 2018–2022"
+            ],
+            [
+              "Households",
+              "10,185",
+              "ACS 2018–2022"
+            ],
+            [
+              "Median household income",
+              "$68,217",
+              "ACS 2018–2022"
+            ],
+            [
+              "Per capita income",
+              "$32,997",
+              "ACS 2018–2022"
+            ],
+            [
+              "Persons in poverty",
+              "8.3%",
+              "ACS 2018–2022"
+            ],
+            [
+              "Median home value",
+              "$175,500",
+              "ACS 2018–2022"
+            ],
+            [
+              "Median gross rent",
+              "$882",
+              "ACS 2018–2022"
+            ]
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Race and Ethnicity"
+        },
+        {
+          "type": "p",
+          "text": "The community is predominantly White (91.8%), with Hispanic or Latino residents representing 4.6%, Black residents 0.6%, and Asian residents 0.5% of the population. The CHNA process included intentional outreach to ensure that low-income, minority and other underserved residents were represented in the community input."
+        },
+        {
+          "type": "h3",
+          "text": "Age and Households"
+        },
+        {
+          "type": "p",
+          "text": "Approximately 22.5% of residents are under age 18 and 19.0% are age 65 and older, reflecting an aging rural population. The county’s 10,185 households have a homeownership rate of roughly 72%. An older population and rural geography heighten the importance of accessible primary care, chronic-disease management, and transportation to services."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "How We Assessed Needs",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Consistent with the Hospital’s prior assessments and with IRS section 501(r)(3), AdventHealth Ottawa drew on both primary and secondary data and solicited input from persons representing the broad interests of the community, including those with public-health expertise and those serving medically underserved, low-income and minority populations."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Secondary data: U.S. Census Bureau (ACS) demographic and social-determinant indicators; CDC PLACES county health estimates; County Health Rankings; and internal hospital utilization data",
+            "Primary data: community and stakeholder surveys and key-informant input",
+            "Community input: representation from the Hospital, public-health partners, and organizations serving underserved populations"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Primary and secondary data were compiled and analyzed to identify the community’s most significant health needs, which were then reviewed and prioritized with the CHNA Committee. {{Confirm committee membership and meeting dates.}}"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Community Health Data Summary",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "County-level estimates from CDC PLACES (2023 release, age-adjusted prevalence among adults) reveal a substantial chronic-disease burden in Franklin County. Two in five adults have obesity and nearly one in three have high blood pressure — both well above national averages and both strongly linked to the county’s leading causes of death."
+        },
+        {
+          "type": "h3",
+          "text": "Chronic Disease"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Indicator",
+            "Franklin County, KS",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Adult obesity (BMI ≥ 30)",
+              "40.3%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "High blood pressure",
+              "31.9%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "High cholesterol",
+              "31.2%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Diagnosed diabetes",
+              "9.6%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Cancer (excluding skin)",
+              "7.2%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "COPD",
+              "6.5%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Coronary heart disease",
+              "5.7%",
+              "CDC PLACES 2023"
+            ]
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Behavioral Health and Risk Behaviors"
+        },
+        {
+          "type": "p",
+          "text": "Behavioral-health needs are pronounced: more than one in five adults report depression, and frequent mental distress and substance-use risk behaviors are common. Limited physical activity compounds the county’s chronic-disease risk."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Indicator",
+            "Franklin County, KS",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Depression",
+              "22.1%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Frequent mental distress",
+              "17.9%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Binge drinking",
+              "17.4%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Current smoking",
+              "16.5%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "No leisure-time physical activity",
+              "26.2%",
+              "CDC PLACES 2023"
+            ]
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Access to Care and Social Determinants"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Indicator",
+            "Franklin County, KS",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Uninsured, age 18–64",
+              "9.2%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Routine checkup in past year",
+              "73.9%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Primary care physician ratio",
+              "2,362 : 1",
+              "County Health Rankings"
+            ],
+            [
+              "Food insecurity",
+              "12.5%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Housing insecurity",
+              "11.1%",
+              "CDC PLACES 2023"
+            ],
+            [
+              "Lack of reliable transportation",
+              "7.2%",
+              "CDC PLACES 2023"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Food insecurity (12.5%) and limited access to primary care interact with chronic disease and behavioral health, making social determinants a cross-cutting theme of this assessment."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Prioritized Health Needs",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Significant health needs were prioritized based on the magnitude and severity of each issue, the feasibility of intervention, alignment with community input, and the Hospital’s capabilities and community-benefit resources. AdventHealth Ottawa identified the following four priority health needs for the 2026 cycle. {{Confirm final priorities and ranking with the CHNA Committee.}}"
+        },
+        {
+          "type": "h3",
+          "text": "1. Chronic Disease and Obesity"
+        },
+        {
+          "type": "p",
+          "text": "With adult obesity at 40.3% and high blood pressure at 31.9%, chronic-disease prevention and management is the county’s leading health need. Strategies will emphasize weight management, hypertension and diabetes control, nutrition, and physical-activity promotion."
+        },
+        {
+          "type": "h3",
+          "text": "2. Behavioral and Mental Health"
+        },
+        {
+          "type": "p",
+          "text": "Depression affects an estimated 22.1% of adults, and frequent mental distress (17.9%) and substance-use risk behaviors are widespread. Priorities include expanding access to mental-health and substance-use services and integrating behavioral health into primary care."
+        },
+        {
+          "type": "h3",
+          "text": "3. Access to Care"
+        },
+        {
+          "type": "p",
+          "text": "A primary-care physician ratio of 2,362:1 and a 9.2% uninsured rate among working-age adults limit timely access to care in this rural county. Strategies will focus on provider access, preventive screening, and reducing barriers such as cost and transportation."
+        },
+        {
+          "type": "h3",
+          "text": "4. Social Determinants of Health"
+        },
+        {
+          "type": "p",
+          "text": "Food insecurity (12.5%), housing insecurity (11.1%), and transportation barriers (7.2%) shape health outcomes across the community. The Hospital will partner with community organizations to address these upstream drivers of health."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Next Steps",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AdventHealth Ottawa will present this assessment to its governing body for adoption and will develop a 2027–2029 Community Health Plan with measurable goals, actions, and partners for each prioritized need. The Hospital will evaluate progress against the prior cycle’s plan, document any needs it does not intend to address and the reasons why, and make this report widely available to the public on its website."
+        },
+        {
+          "type": "callout",
+          "text": "Required next step under IRS 501(r)(3): adopt an implementation strategy that maps actions to each prioritized need and evaluates the impact of the prior CHNA."
+        }
+      ]
+    }
+  ]
+}

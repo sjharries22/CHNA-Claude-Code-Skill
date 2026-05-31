@@ -1,0 +1,29 @@
+{
+  "title": "2020 Community Health Needs Assessment",
+  "subtitle": "AdventHealth Ottawa",
+  "cover_note": "AdventHealth Ransom Memorial, Inc. d/b/a AdventHealth Ottawa\nApproved by the Hospital Board on: October 22, 2020\nCommunity Benefit Manager: Brenda Pfizenmaier",
+  "hero_image": "cover.png",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Executive Summary",
+      "blocks": [
+        {"type": "h3", "text": "Goals"},
+        {"type": "p", "text": "AdventHealth Ransom Memorial, Inc. d/b/a AdventHealth Ottawa (AHO) will be referred to in this document as AdventHealth Ottawa or “the Hospital.” AdventHealth Ottawa located in Ottawa, Kansas conducted a community health needs assessment in 2020. The goals of the assessment were to:"},
+        {"type": "ul", "items": [
+          "Engage public health and community stakeholders including low-income, minority and other underserved populations",
+          "Assess and understand the community’s health issues and needs",
+          "Understand the health behaviors, risk factors and social determinants that impact health",
+          "Identify community resources and collaborate with community partners",
+          "Publish the Community Health Needs Assessment",
+          "Use the assessment findings to develop and implement a 2021-2022 Community Health Plan based on AdventHealth Ottawa’s prioritized issues"
+        ]},
+        {"type": "h3", "text": "Community Health Needs Assessment Committee"},
+        {"type": "p", "text": "In order to ensure broad community input, AdventHealth Ottawa created a Community Health Needs Assessment Committee (CHNAC). The CHNAC was formed by partnering with Franklin County’s Community Health Improvement Plan (CHIP) committee and including the Hospital’s leaders to participate. The CHNAC included representation from the Hospital, public health experts and the broad community, including intentional representation from low-income, minority and other underserved populations."},
+        {"type": "h3", "text": "Data"},
+        {"type": "p", "text": "AdventHealth Ottawa collected both primary and secondary data. The primary data included stakeholder and community surveys. Secondary data sources included internal hospital utilization data. Primary and secondary data was then compiled and analyzed in order to identify the top 11 aggregate issues from the various sources of data."},
+        {"type": "callout", "text": "Primary and secondary data were analyzed to identify the top 11 aggregate community health issues."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "org": "AdventHealth Ottawa",
+  "tagline": "Extending the Healing Ministry of Christ",
+  "colors": {
+    "primary": "#005C95",
+    "primary_dark": "#005080",
+    "accent": "#1DA8E1",
+    "text": "#545E66",
+    "muted": "#79858C",
+    "band": "#005C95"
+  },
+  "fonts": {
+    "heading": "'proxima-nova', Montserrat, 'Segoe UI', Arial, sans-serif",
+    "body": "'proxima-nova', 'Open Sans', 'Segoe UI', Arial, sans-serif"
+  },
+  "logo": "logo.png"
+}
